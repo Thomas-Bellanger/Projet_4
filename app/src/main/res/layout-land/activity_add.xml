@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.mareunion.addActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar" />
+
+    <Spinner
+        android:id="@+id/choix_salle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/spinner_padding"
+        android:layout_marginTop="@dimen/land_margin_top_addActivity"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/salle_margin_top"
+        android:text="Choix de la salle:"
+        android:textSize="@dimen/choix_de_la_salle_textSize"
+        android:layout_marginVertical="@dimen/land_organisateur_margin_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.678"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choix de l'heure:"
+        android:textSize="@dimen/choix_de_l_heure_textSize"
+        app:layout_constraintEnd_toEndOf="@+id/choix_salle"
+        android:layout_marginTop="@dimen/land_margin_top_addActivity"
+        app:layout_constraintStart_toStartOf="@+id/choix_salle"
+        app:layout_constraintTop_toBottomOf="@+id/choix_salle" />
+
+    <EditText
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:textSize="@dimen/list_heure_textSize"
+        android:layout_marginTop="@dimen/land_margin_top_addActivity"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Objet de la réunion"
+        android:layout_marginTop="@dimen/land_margin_top_addActivity"
+        android:textSize="@dimen/objet_reunion_textSize"
+        app:layout_constraintEnd_toEndOf="@+id/time"
+        app:layout_constraintStart_toStartOf="@+id/time"
+        app:layout_constraintTop_toBottomOf="@+id/time" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="E-mail participant"
+        android:textSize="@dimen/objet_reunion_textSize"
+        app:layout_constraintEnd_toEndOf="@+id/editTextOganisateur"
+        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintStart_toStartOf="@+id/editTextOganisateur"
+        app:layout_constraintTop_toBottomOf="@+id/editTextOganisateur" />
+
+    <ImageButton
+        android:id="@+id/plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/plus_margin"
+        android:layout_marginLeft="@dimen/plus_margin"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintTop_toTopOf="@+id/editTextTextEmailAddress"
+        app:srcCompat="@drawable/baseline_add_circle_white_18"
+        app:tint="@color/purple_500" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/participantsRecyclerView"
+        android:name="com.example.mareunion.ParticipantsFragment"
+        android:layout_width="@dimen/participant_recyclerView_width"
+        android:layout_height="@dimen/land_participant_recyclerView_height"
+        android:background="#F8EEF8"
+        android:layout_marginTop="@dimen/land_margin_top_addActivity"
+        app:layout_constraintEnd_toStartOf="@+id/plus"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+
+    <Button
+        android:id="@+id/button_planifier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="Planifier la réunion"
+        android:textSize="@dimen/planifier_textSize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextOganisateur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/land_organisateur_margin_top"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="E-mail Organisateur"
+        android:inputType="textEmailAddress"
+        android:textSize="@dimen/editText_organisateur"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/include" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

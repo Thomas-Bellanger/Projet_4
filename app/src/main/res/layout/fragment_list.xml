@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.mareunion.ListFragment">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/list_imageView_size"
+        android:layout_marginLeft="@dimen/list_imageView_margin"
+        android:layout_height="@dimen/list_imageView_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@android:drawable/ic_notification_overlay"
+        app:tint="#E87676" />
+
+    <TextView
+        android:id="@+id/reunionText"
+        android:layout_width="@dimen/list_reunion_width"
+        android:layout_height="@dimen/list_reunion_height"
+        android:layout_marginLeft="@dimen/list_reunion_margin"
+        android:text="Reunion"
+        android:textSize="@dimen/list_reunion_textSize"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/heureText"
+        android:layout_width="@dimen/list_heure_width"
+        android:layout_height="@dimen/list_heure_height"
+        android:text="-Heure"
+        android:textStyle="bold"
+        android:textSize="@dimen/list_heure_textSize"
+        app:layout_constraintStart_toEndOf="@+id/reunionText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/salleText"
+        android:layout_width="@dimen/list_salle_width"
+        android:layout_height="@dimen/list_salle_height"
+        android:text="-Salle"
+        android:textStyle="bold"
+        android:textSize="@dimen/list_salle_textSize"
+        app:layout_constraintStart_toEndOf="@+id/heureText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Organisateur"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/list_organisateur_height"
+        android:text="Organisateur"
+        android:layout_marginLeft="@dimen/list_organisateur_margin"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/reunionText" />
+
+    <ImageButton
+        android:id="@+id/delette"
+        android:layout_marginTop="@dimen/list_imageButton_margin"
+        android:padding="@dimen/list_imageButton_padding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/imageButton_margin"
+        android:src="@drawable/baseline_delete_black_24"
+        app:tint="#7C7C7C"
+        android:background="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="@dimen/imageButton_margin" />
+</androidx.constraintlayout.widget.ConstraintLayout>

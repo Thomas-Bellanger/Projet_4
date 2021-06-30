@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Ma reunion</string>
+
+    <string-array name="salles">Spinner Salles
+        <item>Peach</item>
+        <item>Mario</item>
+        <item>Luigi</item>
+        <item>Bowser</item>
+        <item>Warrio</item>
+        <item>Waluigi</item>
+        <item>Yoshi</item>
+        <item>Toad</item>
+        <item>Cupa</item>
+        <item>Étoile</item>
+    </string-array>
+</resources>

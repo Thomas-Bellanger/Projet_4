@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/toolbar" />
+
+    <ImageButton
+        android:id="@+id/addReunion"
+        android:layout_width="@dimen/imageButton_size"
+        android:layout_height="@dimen/imageButton_size"
+        android:layout_marginEnd="@dimen/imageButton_margin"
+        android:layout_marginRight="@dimen/imageButton_margin"
+        android:layout_marginBottom="@dimen/imageButton_margin"
+        android:background="@drawable/baseline_remove_circle_white_24"
+        android:elevation="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/add_Reunion_drawable"
+        app:tint="#C10101" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/View"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/recyclerView_height"
+        android:layout_marginBottom="@dimen/recyclerView_marginBottom"
+        app:layout_constraintBottom_toBottomOf="@+id/include2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/fragment_list" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

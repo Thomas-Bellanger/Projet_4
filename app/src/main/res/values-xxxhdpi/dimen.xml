@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spinnerPadding">15dp</dimen>
+    <dimen name="textSize">20dp</dimen>
+    <!---activity_main-->
+    <dimen name="imageButton_size">50dp</dimen>
+    <dimen name="imageButton_margin">18dp</dimen>
+    <dimen name="recyclerView_height">600dp</dimen>
+    <dimen name="recyclerView_marginBottom"></dimen>
+    <drawable name="add_Reunion_drawable">@drawable/baseline_add_circle_white_24</drawable>
+    <!---add_activity-->
+    <dimen name="spinner_padding">15dp</dimen>
+    <dimen name="choix_de_la_salle_textSize">20dp</dimen>
+    <dimen name="choix_de_l_heure_textSize">@dimen/choix_de_la_salle_textSize</dimen>
+    <dimen name="objet_reunion_textSize">@dimen/choix_de_la_salle_textSize</dimen>
+    <dimen name="plus_margin">4dp</dimen>
+    <dimen name="planifier_textSize">15dp</dimen>
+    <dimen name="editText_organisateur">20dp</dimen>
+    <dimen name="editText_organisateur_margin">70dp</dimen>
+    <dimen name="participant_recyclerView_width">212dp</dimen>
+    <dimen name="participant_recyclerView_height">212dp</dimen>
+    <!---participants_fragment-->
+    <dimen name="participant_textView_width">170dp</dimen>
+    <dimen name="participant_imageButton_width">39dp</dimen>
+    <dimen name="participant_imageButton_margin">5dp</dimen>
+    <!---fragment_list-->
+    <dimen name="list_imageView_size">50dp</dimen>
+    <dimen name="list_imageView_margin">10dp</dimen>
+    <dimen name="list_reunion_width">82dp</dimen>
+    <dimen name="list_reunion_height">32dp</dimen>
+    <dimen name="list_reunion_textSize">15dp</dimen>
+    <dimen name="list_heure_width">@dimen/list_reunion_width</dimen>
+    <dimen name="list_heure_height">@dimen/list_reunion_height</dimen>
+    <dimen name="list_heure_textSize">@dimen/list_reunion_textSize</dimen>
+    <dimen name="list_salle_width">@dimen/list_reunion_width</dimen>
+    <dimen name="list_salle_height">@dimen/list_reunion_height</dimen>
+    <dimen name="list_salle_textSize">@dimen/list_reunion_textSize</dimen>
+    <dimen name="list_reunion_margin">10dp</dimen>
+    <dimen name="list_organisateur_height">20dp</dimen>
+    <dimen name="list_organisateur_margin">10dp</dimen>
+    <dimen name="list_imageButton_padding">10dp</dimen>
+    <dimen name="list_imageButton_margin">10dp</dimen>
+    <!---land-->
+    <dimen name="land_recyclerView_height">280dp</dimen>
+    <dimen name="land_participant_recyclerView_height">175dp</dimen>
+    <dimen name="salle_margin_top">60dp</dimen>
+    <dimen name="land_margin_top_addActivity">0dp</dimen>
+    <drawable name="land_add_Reunion_drawable">@drawable/baseline_add_circle_white_24</drawable>
+</resources>
