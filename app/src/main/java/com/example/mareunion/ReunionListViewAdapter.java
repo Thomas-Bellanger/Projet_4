@@ -11,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReunionListViewAdapter extends RecyclerView.Adapter<ReunionListViewHolder> {
-    public static List<Reunion> mReunions = new ArrayList<>();
+    private ApiService mApiService= DI.getApiService();
+    public List<Reunion> mReunions=mApiService.getReunions();
 
     public ReunionListViewAdapter(List<Reunion> items) {
         mReunions = items;

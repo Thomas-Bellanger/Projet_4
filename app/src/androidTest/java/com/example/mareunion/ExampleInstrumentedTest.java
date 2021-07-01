@@ -1,22 +1,22 @@
 package com.example.mareunion;
 
-import android.support.test.espresso.matcher.ViewMatchers;
-import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
+
+import androidx.test.espresso.matcher.ViewMatchers;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+import androidx.test.rule.ActivityTestRule;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.TestRule;
 import org.junit.runner.RunWith;
 
-
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.action.ViewActions.typeText;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.assertThat;
-import static android.support.test.espresso.matcher.ViewMatchers.hasChildCount;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.typeText;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.assertThat;
+import static androidx.test.espresso.matcher.ViewMatchers.hasChildCount;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.core.IsNull.notNullValue;
 
 /**
@@ -49,8 +49,8 @@ public class ExampleInstrumentedTest {
     public void addReunionLaunch() {
         onView(ViewMatchers.withId(R.id.addReunion))
                 .perform(click());
-        onView(ViewMatchers.withId(R.id.salleText))
-                .check(matches(withText("Peach")));
+        onView(ViewMatchers.withId(R.id.textView))
+                .check(matches(withText("Choix de la salle:")));
     }
 
     @Test
@@ -61,7 +61,7 @@ public class ExampleInstrumentedTest {
                 .perform(typeText("participant 1"));
         onView(ViewMatchers.withId(R.id.plus))
                 .perform(click());
-        onView(ViewMatchers.withId(R.id.participantsRecyclerView))
+        onView(ViewMatchers.withId(R.id.mail))
                 .check(matches(withText("participant 1")));
     }
 
@@ -71,7 +71,7 @@ public class ExampleInstrumentedTest {
                 .perform(click());
         onView(ViewMatchers.withId(R.id.button_planifier))
                 .perform(click());
-        onView(ViewMatchers.withId(R.id.View))
-                .check(matches(withText("Reunion 0")));
+        onView(ViewMatchers.withId(R.id.salleText))
+                .check(matches(withText("Peach")));
     }
 }

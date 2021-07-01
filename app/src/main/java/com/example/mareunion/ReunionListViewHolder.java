@@ -1,5 +1,6 @@
 package com.example.mareunion;
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import org.greenrobot.eventbus.EventBus;
+
 
 public class ReunionListViewHolder extends RecyclerView.ViewHolder {
     public final ImageView image;
@@ -18,6 +21,8 @@ public class ReunionListViewHolder extends RecyclerView.ViewHolder {
     public final TextView salle;
     public final TextView organisateur;
     public final ImageButton delette;
+    int color;
+    int indiceColor;
 
 
     public ReunionListViewHolder(View itemView) {
@@ -31,18 +36,47 @@ public class ReunionListViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(Reunion reunion) {
+        getTint();
+        image.setColorFilter(color);
         this.organisateur.setText(reunion.getOrganisateur());
         this.reunionNumber.setText(reunion.getReunionNumber());
         this.heure.setText(reunion.getHeure());
         this.salle.setText(reunion.getSalle());
         Glide.with(image.getContext())
-                .load(reunion.getAvatar())
-                .placeholder(android.R.drawable.ic_dialog_info)
+                .load(R.drawable.baseline_info_black_24)
+                .placeholder(R.drawable.baseline_info_black_24)
                 .apply(RequestOptions.circleCropTransform())
                 .into(image);
     }
 
     public void deletteReunion(Reunion reunion) {
-        ReunionListViewAdapter.mReunions.remove(reunion);
+        EventBus.getDefault().post(new RemoveReunionEvent(reunion));
+    }
+
+    private void getTint(){
+        if (indiceColor==0){
+            color = R.color.pink;
+            indiceColor+=1;
+        }
+        if (indiceColor==1){
+            color = (R.color.red);
+            indiceColor+=1;
+        }
+        if (indiceColor==2){
+            color = (R.color.green);
+            indiceColor+=1;
+        }
+        if (indiceColor==3){
+            color = (R.color.yellow);
+            indiceColor+=1;
+        }
+        if (indiceColor==4){
+            color = (R.color.orange);
+            indiceColor+=1;
+        }
+        if (indiceColor==5){
+            color = (R.color.purple);
+            indiceColor=0;
+        }
     }
 }

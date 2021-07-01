@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaReunion">
 
-        <activity android:name=".addActivity"
+        <activity android:name=".AddActivity"
             android:label="Planifier une réunion"
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity">

@@ -19,10 +19,9 @@ public class Reunion implements Parcelable {
     private String reunionNumber;
     private String heure;
     private String salle;
-    private String avatar;
 
-    public Reunion(String reunionNumber, String heure, String salle, String organisateur, String avatar) {
-        this.avatar = avatar;
+    public Reunion(String reunionNumber, String heure, String salle, String organisateur) {
+
         this.reunionNumber = reunionNumber;
         this.heure = heure;
         this.salle = salle;
@@ -34,15 +33,6 @@ public class Reunion implements Parcelable {
         reunionNumber = in.readString();
         salle = in.readString();
         heure = in.readString();
-        avatar = in.readString();
-    }
-
-    public String getAvatar() {
-        return "https://i.pravatar.cc/150?u=" + System.currentTimeMillis();
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
     }
 
     public String getOrganisateur() {
@@ -88,6 +78,5 @@ public class Reunion implements Parcelable {
         dest.writeString(reunionNumber);
         dest.writeString(heure);
         dest.writeString(salle);
-        dest.writeString(avatar);
     }
 }

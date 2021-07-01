@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParticipantsAdapater extends RecyclerView.Adapter<ParticipantsViewHolder> {
-    public static List<Participants> mParticipants = new ArrayList<>();
+    private List<Participants> mParticipants = new ArrayList<>();
 
     public ParticipantsAdapater(List<Participants> items) {
         mParticipants = items;
@@ -32,16 +32,6 @@ public class ParticipantsAdapater extends RecyclerView.Adapter<ParticipantsViewH
     @Override
     public void onBindViewHolder(ParticipantsViewHolder holder, int position) {
         holder.updateParticipants(mParticipants.get(position));
-
-        ParticipantsViewHolder.retirer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.e("click", "cliqué sur " + mParticipants.get(position).getMail());
-                holder.removeParticipant(mParticipants.get(position));
-                getItemCount();
-                notifyDataSetChanged();
-            }
-        });
     }
 
     @Override

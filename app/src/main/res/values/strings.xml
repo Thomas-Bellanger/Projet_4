@@ -13,4 +13,6 @@
         <item>Cupa</item>
         <item>Étoile</item>
     </string-array>
+    <string name="filtre_View_open">Open filtreView</string>
+    <string name="filtre_view_close">Close filtreView</string>
 </resources>

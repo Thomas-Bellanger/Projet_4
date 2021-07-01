@@ -1,6 +1,9 @@
 package com.example.mareunion;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,27 +13,35 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import androidx.annotation.ColorInt;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class addActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
-    static Button create;
-    ImageButton plus;
-    EditText editTextMail;
-    String participantMail;
-    EditText editOrganisateur;
-    Spinner salles;
-    EditText time;
-    Reunion mReunion;
-    ImageView mImageView;
-    String mImage;
-    RecyclerView mRecyclerView;
+import java.util.ArrayList;
+import java.util.List;
+
+public class AddActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+
+    private Button create;
+    private ImageButton plus;
+    private EditText editTextMail;
+    private String participantMail;
+    private EditText editOrganisateur;
+    private Spinner salles;
+    private EditText time;
+    private Reunion mReunion;
+    private ImageView mImageView;
+    private RecyclerView mRecyclerView;
     private Participants participant;
     private ParticipantsAdapater mAdapater;
+    private ApiService mApiService;
+    int image;
 
 
     @Override
@@ -44,7 +55,8 @@ public class addActivity extends AppCompatActivity implements AdapterView.OnItem
         create = findViewById(R.id.button_planifier);
         salles = findViewById(R.id.choix_salle);
         mImageView = findViewById(R.id.imageView);
-        mImage = "https://i.pravatar.cc/150?u=";
+        mApiService=DI.getApiService();
+        image=android.R.drawable.ic_dialog_info;
 
         ArrayAdapter<CharSequence> adapterSalles = ArrayAdapter.createFromResource(this, R.array.salles, android.R.layout.simple_spinner_item);
         adapterSalles.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -62,21 +74,21 @@ public class addActivity extends AppCompatActivity implements AdapterView.OnItem
             public void onClick(View v) {
                 participantMail = editTextMail.getText().toString();
                 participant = new Participants(participantMail);
-                ParticipantsAdapater.mParticipants.add(participant);
-                initList();
+                mApiService.addParticipant(participant);
                 editTextMail.getText().clear();
+                initList();
             }
         });
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mReunion = new Reunion(
-                        "reunion " + ReunionListViewAdapter.mReunions.size() + "   -",
+                        "reunion " + mApiService.getReunions().size() + "   -",
                         time.getText().toString() + "    -",
                         salles.getSelectedItem().toString(),
-                        editOrganisateur.getText().toString() + ParticipantsAdapater.mParticipants,
-                        mImage);
-                ReunionListViewAdapter.mReunions.add(mReunion);
+                        editOrganisateur.getText().toString() + mApiService.getParticipants());
+                mApiService.addReunion(mReunion);
+                Log.e("ajout", "la liste contient " +mApiService.getReunions().size());
                 finish();
             }
         });
@@ -100,18 +112,29 @@ public class addActivity extends AppCompatActivity implements AdapterView.OnItem
 
     private void configureRecyclerView() {
         mRecyclerView = findViewById(R.id.participantsRecyclerView);
-        mAdapater = new ParticipantsAdapater(ParticipantsAdapater.mParticipants);
+        mAdapater = new ParticipantsAdapater(mApiService.getParticipants());
         mRecyclerView.setAdapter(mAdapater);
-        this.mRecyclerView.setLayoutManager(new LinearLayoutManager(addActivity.this));
-    }
-
-    private void initList() {
-        mRecyclerView.setAdapter(new ParticipantsAdapater(ParticipantsAdapater.mParticipants));
+        this.mRecyclerView.setLayoutManager(new LinearLayoutManager(AddActivity.this));
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        ParticipantsAdapater.mParticipants.clear();
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void clickRemove(RetirerParticipantEvent event) {
+        mApiService.deletteParticipant(event.participant);
+        initList();
+    }
+    private void initList() {
+        mRecyclerView.setAdapter(new ParticipantsAdapater(mApiService.getParticipants()));
     }
 }

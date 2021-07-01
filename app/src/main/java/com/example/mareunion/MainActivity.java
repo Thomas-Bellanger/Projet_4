@@ -6,20 +6,30 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
-    int filtre;
     private ImageButton addButton;
     private RecyclerView mRecyclerView;
     private ReunionListViewAdapter mAdapter;
+    private DrawerLayout mDrawerLayout;
+    private Toolbar toolbar;
+    private ApiService mApiService;
+    private List<Reunion> mReunions;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,12 +38,13 @@ public class MainActivity extends AppCompatActivity {
         this.configureToolBar();
         configureRecyclerView();
         addButton = findViewById(R.id.addReunion);
+        mApiService= DI.getApiService();
 
         addButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent addReunion = new Intent(MainActivity.this, addActivity.class);
+                Intent addReunion = new Intent(MainActivity.this, AddActivity.class);
                 startActivity(addReunion);
             }
         });
@@ -46,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void configureToolBar() {
-        Toolbar toolbar = findViewById(R.id.activity_main_toolBar);
+        toolbar = findViewById(R.id.activity_main_toolBar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
     }
@@ -56,21 +67,7 @@ public class MainActivity extends AppCompatActivity {
         //3 - Handle actions on menu items
         switch (item.getItemId()) {
             case R.id.menu_activity_filter:
-                if (filtre == 0) {
-                    Toast.makeText(this, "Filtre par date", Toast.LENGTH_SHORT).show();
-                    filtre = 1;
-                    return true;
-                }
-                if (filtre == 1) {
-                    Toast.makeText(this, "Filtre par salle", Toast.LENGTH_SHORT).show();
-                    filtre = 2;
-                    return true;
-                }
-                if (filtre == 2) {
-                    Toast.makeText(this, "Tout afficher", Toast.LENGTH_SHORT).show();
-                    filtre = 0;
-                    return true;
-                }
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -78,18 +75,36 @@ public class MainActivity extends AppCompatActivity {
 
     private void configureRecyclerView() {
         mRecyclerView = findViewById(R.id.View);
-        mAdapter = new ReunionListViewAdapter(ReunionListViewAdapter.mReunions);
         mRecyclerView.setAdapter(mAdapter);
         this.mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }
 
-    private void initList() {
-        mRecyclerView.setAdapter(new ReunionListViewAdapter(ReunionListViewAdapter.mReunions));
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe
+    public void removeReunion(RemoveReunionEvent event){
+        mApiService.deletteReunion(event.reunion);
+        initList();
     }
 
     public void onResume() {
         super.onResume();
         initList();
+    }
+
+    private void initList() {
+        mReunions= mApiService.getReunions();
+        mRecyclerView.setAdapter(new ReunionListViewAdapter(mReunions));
     }
 }
 
