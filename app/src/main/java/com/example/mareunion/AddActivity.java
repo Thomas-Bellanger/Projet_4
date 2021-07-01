@@ -88,7 +88,6 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
                         salles.getSelectedItem().toString(),
                         editOrganisateur.getText().toString() + mApiService.getParticipants());
                 mApiService.addReunion(mReunion);
-                Log.e("ajout", "la liste contient " +mApiService.getReunions().size());
                 finish();
             }
         });
