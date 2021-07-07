@@ -1,9 +1,6 @@
-package com.example.mareunion;
+package com.example.mareunion.controler;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,18 +10,18 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
-import androidx.annotation.ColorInt;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mareunion.R;
+import com.example.mareunion.model.Participants;
+import com.example.mareunion.model.Reunion;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class AddActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -40,7 +37,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
     private RecyclerView mRecyclerView;
     private Participants participant;
     private ParticipantsAdapater mAdapater;
-    private ApiService mApiService;
+    private DummyApiService mApiService;
     int image;
 
 
@@ -94,8 +91,8 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
     }
 
     private void configureToolBar() {
-        Toolbar toolbar = findViewById(R.id.activity_main_toolBar);
-        setSupportActionBar(toolbar);
+       Toolbar mToolbar = findViewById(R.id.activity_main_toolBar);
+        setSupportActionBar(mToolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
     }

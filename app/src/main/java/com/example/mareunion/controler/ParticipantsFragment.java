@@ -1,4 +1,4 @@
-package com.example.mareunion;
+package com.example.mareunion.controler;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mareunion.R;
+import com.example.mareunion.model.Participants;
 
 import java.util.List;
 

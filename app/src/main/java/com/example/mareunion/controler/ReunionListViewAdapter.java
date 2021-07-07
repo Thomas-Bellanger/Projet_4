@@ -1,4 +1,4 @@
-package com.example.mareunion;
+package com.example.mareunion.controler;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,15 +7,21 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mareunion.R;
+import com.example.mareunion.model.Reunion;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ReunionListViewAdapter extends RecyclerView.Adapter<ReunionListViewHolder> {
-    private ApiService mApiService= DI.getApiService();
-    public List<Reunion> mReunions=mApiService.getReunions();
+    private DummyApiService mApiService= DI.getApiService();
+    public List<Reunion> mReunions;
+    private List<Reunion> mReunionsFull;
+    List<Reunion> filteredList = new ArrayList<>();
 
     public ReunionListViewAdapter(List<Reunion> items) {
         mReunions = items;
+        mReunionsFull= mReunions;
     }
 
     @NonNull
@@ -43,5 +49,11 @@ public class ReunionListViewAdapter extends RecyclerView.Adapter<ReunionListView
     public int getItemCount() {
         return mReunions.size();
     }
+
+    public void updateReunion(List<Reunion> newReunion){
+        mReunions=newReunion;
+        notifyDataSetChanged();
+    }
+
 }
 

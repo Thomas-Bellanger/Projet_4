@@ -1,4 +1,6 @@
-package com.example.mareunion;
+package com.example.mareunion.controler;
+
+import com.example.mareunion.model.Participants;
 
 public class RetirerParticipantEvent {
 

@@ -1,44 +1,47 @@
-package com.example.mareunion;
+package com.example.mareunion.controler;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.mareunion.R;
+import com.example.mareunion.model.Reunion;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Filterable {
     private ImageButton addButton;
     private RecyclerView mRecyclerView;
     private ReunionListViewAdapter mAdapter;
-    private DrawerLayout mDrawerLayout;
     private Toolbar toolbar;
     private ApiService mApiService;
     private List<Reunion> mReunions;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.configureToolBar();
-        configureRecyclerView();
-        addButton = findViewById(R.id.addReunion);
+                addButton = findViewById(R.id.addReunion);
         mApiService= DI.getApiService();
+        configureRecyclerView();
 
         addButton.setOnClickListener(new View.OnClickListener() {
 
@@ -50,31 +53,17 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.action_bar, menu);
-        return true;
-    }
-
     private void configureToolBar() {
         toolbar = findViewById(R.id.activity_main_toolBar);
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        //3 - Handle actions on menu items
-        switch (item.getItemId()) {
-            case R.id.menu_activity_filter:
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 
     private void configureRecyclerView() {
         mRecyclerView = findViewById(R.id.View);
+        mReunions= mApiService.getReunions();
+        mAdapter= new ReunionListViewAdapter(mReunions);
         mRecyclerView.setAdapter(mAdapter);
         this.mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }
@@ -104,7 +93,51 @@ public class MainActivity extends AppCompatActivity {
 
     private void initList() {
         mReunions= mApiService.getReunions();
-        mRecyclerView.setAdapter(new ReunionListViewAdapter(mReunions));
+        mAdapter.updateReunion(mReunions);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater= getMenuInflater();
+        inflater.inflate(R.menu.filtre, menu);
+
+        MenuItem searchItem= menu.findItem(R.id.search);
+        SearchView searchView= (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                getFilter().filter(newText);
+                return false;
+            }
+        });
+        return true;
+    }
+
+    public Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results= new FilterResults();
+            results.values = mApiService.filterReunion(constraint.toString());
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            mAdapter.updateReunion((List) results.values);
+        }
+    };
+
+    @Override
+    public Filter getFilter() {
+        return filter;
     }
 }
 

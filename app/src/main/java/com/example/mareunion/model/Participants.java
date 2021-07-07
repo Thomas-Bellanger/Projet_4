@@ -1,4 +1,4 @@
-package com.example.mareunion;
+package com.example.mareunion.model;
 
 public class Participants {
     private String mail;

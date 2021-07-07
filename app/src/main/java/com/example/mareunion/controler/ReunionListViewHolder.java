@@ -1,6 +1,5 @@
-package com.example.mareunion;
+package com.example.mareunion.controler;
 
-import android.graphics.Color;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -10,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.mareunion.R;
+import com.example.mareunion.controler.RemoveReunionEvent;
+import com.example.mareunion.model.Reunion;
 
 import org.greenrobot.eventbus.EventBus;
 
