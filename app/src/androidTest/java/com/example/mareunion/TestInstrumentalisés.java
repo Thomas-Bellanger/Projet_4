@@ -28,7 +28,7 @@ import static org.hamcrest.core.IsNull.notNullValue;
  */
 
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
+public class TestInstrumentalisés {
 
     private MainActivity mActivity;
 
@@ -42,9 +42,8 @@ public class ExampleInstrumentedTest {
         assertThat(mActivity, notNullValue());
     }
 
-
     @Test
-    public void reunionListIsempty() {
+    public void AtStartReunionListIsempty() {
         onView(ViewMatchers.withId(R.id.View))
                 .check(matches(hasChildCount(0)));
     }
