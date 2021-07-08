@@ -8,6 +8,7 @@ import java.util.List;
 
 public class DummyApiService implements ApiService {
     public List<Reunion> reunions = new ArrayList<>();
+    public List<Reunion> filteredList = new ArrayList<>();
 
     public List<Participants> participants= new ArrayList<>();
 
@@ -30,8 +31,10 @@ public class DummyApiService implements ApiService {
     public void deletteParticipant(Participants participant){participants.remove(participant);}
 
     @Override
+    public List<Reunion> getFilteredList(){return filteredList;}
+
+    @Override
     public List<Reunion> filterReunion(String filterPattern) {
-        List<Reunion> filteredList = new ArrayList<>();
 
         if (filterPattern == null || filterPattern.length() == 0) {
             return reunions;

@@ -2,6 +2,7 @@ package com.example.mareunion;
 
 import com.example.mareunion.controler.DI;
 import com.example.mareunion.controler.DummyApiService;
+import com.example.mareunion.controler.ReunionListViewAdapter;
 import com.example.mareunion.model.Participants;
 import com.example.mareunion.model.Reunion;
 
@@ -53,5 +54,19 @@ public class ListTest {
         assert (mParticipants.contains(participantToDelette));
         mApiService.deletteParticipant(participantToDelette);
         assertFalse(mParticipants.contains(participantToDelette));
+    }
+
+    @Test
+    public void filtreList() {
+        List <Reunion> reunionFiltre=mApiService.getFilteredList();
+        Reunion reunionToFiltre = new Reunion("reunionNumber 0", "heure", "salle", "organisateur");
+        mApiService.addReunion(reunionToFiltre);
+        assert (mReunions.contains(reunionToFiltre));
+        Reunion reunionToIgnore = new Reunion("reunionNumber 1", "heure", "salle", "organisateur");
+        mApiService.addReunion(reunionToIgnore);
+        assert (mReunions.contains(reunionToIgnore));
+        mApiService.filterReunion("0");
+        assert reunionFiltre.contains(reunionToFiltre);
+        assert reunionFiltre.size()==1;
     }
 }

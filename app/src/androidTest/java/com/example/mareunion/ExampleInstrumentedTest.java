@@ -1,6 +1,8 @@
 package com.example.mareunion;
 
 
+import android.content.res.Resources;
+
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
@@ -76,4 +78,4 @@ public class ExampleInstrumentedTest {
         onView(ViewMatchers.withId(R.id.salleText))
                 .check(matches(withText("Peach")));
     }
-}
+    }
