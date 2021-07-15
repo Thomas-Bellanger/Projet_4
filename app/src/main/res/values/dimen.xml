@@ -2,7 +2,7 @@
 <resources>
     <dimen name="spinnerPadding">15dp</dimen>
     <dimen name="textSize">20dp</dimen>
-<!---activity_main-->
+    <!---activity_main-->
     <dimen name="imageButton_size">50dp</dimen>
     <dimen name="imageButton_margin">18dp</dimen>
     <dimen name="recyclerView_height">600dp</dimen>

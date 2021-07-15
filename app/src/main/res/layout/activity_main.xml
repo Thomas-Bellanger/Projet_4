@@ -36,5 +36,4 @@
         tools:listitem="@layout/fragment_list" />
 
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>

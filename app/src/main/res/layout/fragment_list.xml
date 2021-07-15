@@ -10,8 +10,8 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="@dimen/list_imageView_size"
-        android:layout_marginLeft="@dimen/list_imageView_margin"
         android:layout_height="@dimen/list_imageView_size"
+        android:layout_marginLeft="@dimen/list_imageView_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@drawable/baseline_info_white_24" />
@@ -32,8 +32,8 @@
         android:layout_width="@dimen/list_heure_width"
         android:layout_height="@dimen/list_heure_height"
         android:text="-Heure"
-        android:textStyle="bold"
         android:textSize="@dimen/list_heure_textSize"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/reunionText"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,8 +42,8 @@
         android:layout_width="@dimen/list_salle_width"
         android:layout_height="@dimen/list_salle_height"
         android:text="-Salle"
-        android:textStyle="bold"
         android:textSize="@dimen/list_salle_textSize"
+        android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/heureText"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,22 +51,22 @@
         android:id="@+id/Organisateur"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/list_organisateur_height"
-        android:text="Organisateur"
         android:layout_marginLeft="@dimen/list_organisateur_margin"
+        android:text="Organisateur"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/reunionText" />
 
     <ImageButton
         android:id="@+id/delette"
-        android:layout_marginTop="@dimen/list_imageButton_margin"
-        android:padding="@dimen/list_imageButton_padding"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/list_imageButton_margin"
         android:layout_marginEnd="@dimen/imageButton_margin"
-        android:src="@drawable/baseline_delete_black_24"
-        app:tint="#7C7C7C"
+        android:layout_marginRight="@dimen/imageButton_margin"
         android:background="@color/white"
+        android:padding="@dimen/list_imageButton_padding"
+        android:src="@drawable/baseline_delete_black_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="@dimen/imageButton_margin" />
+        app:tint="#7C7C7C" />
 </androidx.constraintlayout.widget.ConstraintLayout>

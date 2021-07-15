@@ -6,17 +6,17 @@
 
     <TextView
         android:id="@+id/mail"
-        android:textSize="@dimen/choix_de_la_salle_textSize"
         android:layout_width="@dimen/participant_textView_width"
         android:layout_height="wrap_content"
-        android:text="Mail du participant" />
+        android:text="Mail du participant"
+        android:textSize="@dimen/choix_de_la_salle_textSize" />
 
     <ImageButton
         android:id="@+id/retirer_participant"
         android:layout_width="@dimen/participant_imageButton_width"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/participant_imageButton_margin"
         android:layout_gravity="center"
+        android:layout_marginRight="@dimen/participant_imageButton_margin"
         android:background="@color/white"
         android:src="@drawable/baseline_remove_circle_white_20"
         app:tint="#F18585" />

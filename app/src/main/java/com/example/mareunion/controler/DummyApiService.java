@@ -2,7 +2,6 @@ package com.example.mareunion.controler;
 
 import android.util.Log;
 
-import com.example.mareunion.R;
 import com.example.mareunion.model.Participants;
 import com.example.mareunion.model.Reunion;
 
@@ -14,27 +13,38 @@ public class DummyApiService implements ApiService {
 
     public int color;
 
-    public List<Participants> participants= new ArrayList<>();
+    public List<Participants> participants = new ArrayList<>();
 
     @Override
-    public List<Reunion> getReunions(){return reunions;}
+    public List<Reunion> getReunions() {
+        return reunions;
+    }
 
     @Override
-    public void deletteReunion(Reunion reunion){reunions.remove(reunion);}
+    public void deletteReunion(Reunion reunion) {
+        reunions.remove(reunion);
+    }
 
     @Override
-    public void addReunion(Reunion reunion){
+    public void addReunion(Reunion reunion) {
 
-        reunions.add(reunion);}
-
-    @Override
-    public List<Participants> getParticipants(){return participants;}
+        reunions.add(reunion);
+    }
 
     @Override
-    public void addParticipant(Participants participant){participants.add(participant);}
+    public List<Participants> getParticipants() {
+        return participants;
+    }
 
     @Override
-    public void deletteParticipant(Participants participant){participants.remove(participant);}
+    public void addParticipant(Participants participant) {
+        participants.add(participant);
+    }
+
+    @Override
+    public void deletteParticipant(Participants participant) {
+        participants.remove(participant);
+    }
 
     @Override
     public List<Reunion> filterReunion(String filterPattern) {
@@ -49,12 +59,10 @@ public class DummyApiService implements ApiService {
                 if (reunion.getHeure().toLowerCase().contains(filterLowerCase)) {
                     filteredList.add(reunion);
                     Log.e("ajout_heure", "ajout par heure");
-                }
-                else if (reunion.getSalle().toLowerCase().contains(filterLowerCase)) {
+                } else if (reunion.getSalle().toLowerCase().contains(filterLowerCase)) {
                     filteredList.add(reunion);
                     Log.e("ajout_salle", "ajout par salle");
-                }
-                else if (reunion.getReunionNumber().toLowerCase().contains(filterLowerCase)) {
+                } else if (reunion.getReunionNumber().toLowerCase().contains(filterLowerCase)) {
                     filteredList.add(reunion);
                     Log.e("ajout_reunion", "ajout par numéro");
                 }

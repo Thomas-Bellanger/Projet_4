@@ -5,7 +5,7 @@
     <dimen name="spinnerPadding">15dp</dimen>
     <dimen name="textSize">20dp</dimen>
     <drawable name="add_Reunion_drawable">@drawable/baseline_add_circle_white_48</drawable>
-<!---activity_main-->
+    <!---activity_main-->
     <dimen name="imageButton_size">70dp</dimen>
     <dimen name="imageButton_margin">18dp</dimen>
     <dimen name="recyclerView_height">870dp</dimen>

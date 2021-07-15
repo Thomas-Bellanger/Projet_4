@@ -72,39 +72,41 @@ public class Reunion implements Parcelable {
         this.salle = salle;
     }
 
-    public int getColor(){ return color;}
-
-    public int setColor(){
-        if (getSalle().equals("Peach")) {
-        color = R.color.pink;
-
-    } else if ("Mario".equals(getSalle())) {
-        color = R.color.red;
-
-    } else if ("Luigi".equals(getSalle())) {
-        color = R.color.green;
-
-    } else if ("Yoshi".equals(getSalle())) {
-        color = R.color.caraibe;
-
-    } else if ("Warrio".equals(getSalle())) {
-        color = R.color.yellow;
-
-    } else if ("Waluigi".equals(getSalle())) {
-        color = R.color.purple;
-
-    } else if ("Toad".equals(getSalle())) {
-        color = R.color.grey;
-
-    } else if ("Bowser".equals(getSalle())) {
-        color = R.color.orange;
-
-    } else if ("Étoile".equals(getSalle())) {
-        color = R.color.blue;
-
-    } else if ("Cupa".equals(getSalle())) {
-        color = R.color.marron;
+    public int getColor() {
+        return color;
     }
+
+    public int setColor() {
+        if (getSalle().equals("Peach")) {
+            color = R.color.pink;
+
+        } else if ("Mario".equals(getSalle())) {
+            color = R.color.red;
+
+        } else if ("Luigi".equals(getSalle())) {
+            color = R.color.green;
+
+        } else if ("Yoshi".equals(getSalle())) {
+            color = R.color.caraibe;
+
+        } else if ("Warrio".equals(getSalle())) {
+            color = R.color.yellow;
+
+        } else if ("Waluigi".equals(getSalle())) {
+            color = R.color.purple;
+
+        } else if ("Toad".equals(getSalle())) {
+            color = R.color.grey;
+
+        } else if ("Bowser".equals(getSalle())) {
+            color = R.color.orange;
+
+        } else if ("Étoile".equals(getSalle())) {
+            color = R.color.blue;
+
+        } else if ("Cupa".equals(getSalle())) {
+            color = R.color.marron;
+        }
         return color;
     }
 

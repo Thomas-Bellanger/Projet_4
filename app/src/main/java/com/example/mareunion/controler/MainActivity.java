@@ -32,6 +32,20 @@ public class MainActivity extends AppCompatActivity implements Filterable {
     private ReunionListViewAdapter mAdapter;
     private Toolbar toolbar;
     private ApiService mApiService;
+    public Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results = new FilterResults();
+            results.values = mApiService.filterReunion(constraint.toString());
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            mAdapter.updateReunion((List) results.values);
+        }
+    };
     private List<Reunion> mReunions;
 
     @Override
@@ -39,8 +53,8 @@ public class MainActivity extends AppCompatActivity implements Filterable {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.configureToolBar();
-                addButton = findViewById(R.id.addReunion);
-        mApiService= DI.getApiService();
+        addButton = findViewById(R.id.addReunion);
+        mApiService = DI.getApiService();
         configureRecyclerView();
 
         addButton.setOnClickListener(new View.OnClickListener() {
@@ -59,11 +73,10 @@ public class MainActivity extends AppCompatActivity implements Filterable {
         ActionBar ab = getSupportActionBar();
     }
 
-
     private void configureRecyclerView() {
         mRecyclerView = findViewById(R.id.View);
-        mReunions= mApiService.getReunions();
-        mAdapter= new ReunionListViewAdapter(mReunions);
+        mReunions = mApiService.getReunions();
+        mAdapter = new ReunionListViewAdapter(mReunions);
         mRecyclerView.setAdapter(mAdapter);
         this.mRecyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
     }
@@ -81,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements Filterable {
     }
 
     @Subscribe
-    public void removeReunion(RemoveReunionEvent event){
+    public void removeReunion(RemoveReunionEvent event) {
         mApiService.deletteReunion(event.reunion);
         initList();
     }
@@ -92,17 +105,17 @@ public class MainActivity extends AppCompatActivity implements Filterable {
     }
 
     private void initList() {
-        mReunions= mApiService.getReunions();
+        mReunions = mApiService.getReunions();
         mAdapter.updateReunion(mReunions);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater= getMenuInflater();
+        MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.filtre, menu);
 
-        MenuItem searchItem= menu.findItem(R.id.search);
-        SearchView searchView= (SearchView) searchItem.getActionView();
+        MenuItem searchItem = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -119,21 +132,6 @@ public class MainActivity extends AppCompatActivity implements Filterable {
         });
         return true;
     }
-
-    public Filter filter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            FilterResults results= new FilterResults();
-            results.values = mApiService.filterReunion(constraint.toString());
-
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            mAdapter.updateReunion((List) results.values);
-        }
-    };
 
     @Override
     public Filter getFilter() {

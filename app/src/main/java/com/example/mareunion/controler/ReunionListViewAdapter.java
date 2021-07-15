@@ -14,14 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReunionListViewAdapter extends RecyclerView.Adapter<ReunionListViewHolder> {
-    private DummyApiService mApiService= DI.getApiService();
     public List<Reunion> mReunions;
-    private List<Reunion> mReunionsFull;
     List<Reunion> filteredList = new ArrayList<>();
+    private final DummyApiService mApiService = DI.getApiService();
+    private final List<Reunion> mReunionsFull;
 
     public ReunionListViewAdapter(List<Reunion> items) {
         mReunions = items;
-        mReunionsFull= mReunions;
+        mReunionsFull = mReunions;
     }
 
     @NonNull
@@ -50,8 +50,8 @@ public class ReunionListViewAdapter extends RecyclerView.Adapter<ReunionListView
         return mReunions.size();
     }
 
-    public void updateReunion(List<Reunion> newReunion){
-        mReunions=newReunion;
+    public void updateReunion(List<Reunion> newReunion) {
+        mReunions = newReunion;
         notifyDataSetChanged();
     }
 

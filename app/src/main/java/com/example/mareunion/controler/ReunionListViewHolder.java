@@ -79,7 +79,8 @@ public class ReunionListViewHolder extends RecyclerView.ViewHolder {
 
         image.setColorFilter(ContextCompat.getColor(this.salle.getContext(), reunion.setColor()));
     }
-        public void deletteReunion (Reunion reunion){
-            EventBus.getDefault().post(new RemoveReunionEvent(reunion));
-        }
+
+    public void deletteReunion(Reunion reunion) {
+        EventBus.getDefault().post(new RemoveReunionEvent(reunion));
+    }
 }

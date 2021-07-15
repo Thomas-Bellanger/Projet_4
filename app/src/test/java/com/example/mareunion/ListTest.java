@@ -2,7 +2,6 @@ package com.example.mareunion;
 
 import com.example.mareunion.controler.DI;
 import com.example.mareunion.controler.DummyApiService;
-import com.example.mareunion.controler.ReunionListViewAdapter;
 import com.example.mareunion.model.Participants;
 import com.example.mareunion.model.Reunion;
 
@@ -27,7 +26,7 @@ public class ListTest {
     public void addReunionWithSuccess() {
         Reunion reunionToAdd = new Reunion("reunionNumber", "heure", "salle", "organisateur");
         mApiService.addReunion(reunionToAdd);
-        assertTrue (mReunions.contains(reunionToAdd));
+        assertTrue(mReunions.contains(reunionToAdd));
 
     }
 
@@ -35,7 +34,7 @@ public class ListTest {
     public void deletteReunionWithSuccess() {
         Reunion reunionToDelette = new Reunion("reunionNumber", "heure", "salle", "organisateur");
         mApiService.addReunion(reunionToDelette);
-        assertTrue (mReunions.contains(reunionToDelette));
+        assertTrue(mReunions.contains(reunionToDelette));
         mApiService.deletteReunion(reunionToDelette);
         assertFalse(mReunions.contains(reunionToDelette));
     }
@@ -45,14 +44,14 @@ public class ListTest {
     public void addParticipantWithSuccess() {
         Participants participantToAdd = new Participants("jojo");
         mApiService.addParticipant(participantToAdd);
-        assertTrue (mParticipants.contains(participantToAdd));
+        assertTrue(mParticipants.contains(participantToAdd));
     }
 
     @Test
     public void deletteParticipantWithSuccess() {
         Participants participantToDelette = new Participants("jojo");
         mApiService.addParticipant(participantToDelette);
-        assertTrue (mParticipants.contains(participantToDelette));
+        assertTrue(mParticipants.contains(participantToDelette));
         mApiService.deletteParticipant(participantToDelette);
         assertFalse(mParticipants.contains(participantToDelette));
     }
@@ -61,10 +60,10 @@ public class ListTest {
     public void filtreList() {
         Reunion reunionToFiltre = new Reunion("reunionNumber 0", "11:00", "salle", "organisateur");
         mApiService.addReunion(reunionToFiltre);
-        assertTrue (mReunions.contains(reunionToFiltre));
+        assertTrue(mReunions.contains(reunionToFiltre));
         Reunion reunionToIgnore = new Reunion("reunionNumber 1", "heure", "salle", "organisateur");
         mApiService.addReunion(reunionToIgnore);
-        assertTrue (mReunions.contains(reunionToIgnore));
+        assertTrue(mReunions.contains(reunionToIgnore));
         assertTrue(mApiService.filterReunion("11:00").contains(reunionToFiltre));
     }
 }

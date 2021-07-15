@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mareunion.R;
 import com.example.mareunion.model.Participants;
-import com.example.mareunion.controler.RetirerParticipantEvent;
 
 import org.greenrobot.eventbus.EventBus;
 

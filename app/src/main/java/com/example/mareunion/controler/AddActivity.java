@@ -25,6 +25,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 public class AddActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    int image;
     private Button create;
     private ImageButton plus;
     private EditText editTextMail;
@@ -38,8 +39,6 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
     private Participants participant;
     private ParticipantsAdapater mAdapater;
     private DummyApiService mApiService;
-    int image;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +51,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         create = findViewById(R.id.button_planifier);
         salles = findViewById(R.id.choix_salle);
         mImageView = findViewById(R.id.imageView);
-        mApiService=DI.getApiService();
+        mApiService = DI.getApiService();
 
         ArrayAdapter<CharSequence> adapterSalles = ArrayAdapter.createFromResource(this, R.array.salles, android.R.layout.simple_spinner_item);
         adapterSalles.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -85,12 +84,12 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
                         editOrganisateur.getText().toString() + mApiService.getParticipants());
                 mApiService.addReunion(mReunion);
                 finish();
-                }
-            });
+            }
+        });
     }
 
     private void configureToolBar() {
-       Toolbar mToolbar = findViewById(R.id.activity_main_toolBar);
+        Toolbar mToolbar = findViewById(R.id.activity_main_toolBar);
         setSupportActionBar(mToolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
@@ -129,6 +128,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         mApiService.deletteParticipant(event.participant);
         initList();
     }
+
     private void initList() {
         mRecyclerView.setAdapter(new ParticipantsAdapater(mApiService.getParticipants()));
     }

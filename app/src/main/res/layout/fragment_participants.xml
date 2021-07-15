@@ -6,8 +6,8 @@
     tools:context=".controler.ParticipantsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/participantsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/participantsRecyclerView"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>
