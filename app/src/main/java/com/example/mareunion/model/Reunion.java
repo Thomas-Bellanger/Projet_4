@@ -3,6 +3,8 @@ package com.example.mareunion.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.mareunion.R;
+
 public class Reunion implements Parcelable {
     public static final Creator<Reunion> CREATOR = new Creator<Reunion>() {
         @Override
@@ -19,6 +21,7 @@ public class Reunion implements Parcelable {
     private String reunionNumber;
     private String heure;
     private String salle;
+    private int color;
 
     public Reunion(String reunionNumber, String heure, String salle, String organisateur) {
 
@@ -26,6 +29,7 @@ public class Reunion implements Parcelable {
         this.heure = heure;
         this.salle = salle;
         this.organisateur = organisateur;
+
     }
 
     protected Reunion(Parcel in) {
@@ -33,6 +37,7 @@ public class Reunion implements Parcelable {
         reunionNumber = in.readString();
         salle = in.readString();
         heure = in.readString();
+        color = in.readInt();
     }
 
     public String getOrganisateur() {
@@ -67,6 +72,42 @@ public class Reunion implements Parcelable {
         this.salle = salle;
     }
 
+    public int getColor(){ return color;}
+
+    public int setColor(){
+        if (getSalle().equals("Peach")) {
+        color = R.color.pink;
+
+    } else if ("Mario".equals(getSalle())) {
+        color = R.color.red;
+
+    } else if ("Luigi".equals(getSalle())) {
+        color = R.color.green;
+
+    } else if ("Yoshi".equals(getSalle())) {
+        color = R.color.caraibe;
+
+    } else if ("Warrio".equals(getSalle())) {
+        color = R.color.yellow;
+
+    } else if ("Waluigi".equals(getSalle())) {
+        color = R.color.purple;
+
+    } else if ("Toad".equals(getSalle())) {
+        color = R.color.grey;
+
+    } else if ("Bowser".equals(getSalle())) {
+        color = R.color.orange;
+
+    } else if ("Étoile".equals(getSalle())) {
+        color = R.color.blue;
+
+    } else if ("Cupa".equals(getSalle())) {
+        color = R.color.marron;
+    }
+        return color;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -78,5 +119,6 @@ public class Reunion implements Parcelable {
         dest.writeString(reunionNumber);
         dest.writeString(heure);
         dest.writeString(salle);
+        dest.writeInt(color);
     }
 }

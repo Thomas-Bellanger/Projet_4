@@ -14,8 +14,7 @@
         android:layout_height="@dimen/list_imageView_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/baseline_info_black_24"
-        app:tint="@color/white" />
+        tools:src="@drawable/baseline_info_white_24" />
 
     <TextView
         android:id="@+id/reunionText"

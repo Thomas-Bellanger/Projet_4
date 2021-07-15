@@ -19,6 +19,4 @@ public interface ApiService {
     void deletteParticipant(Participants participant);
 
     List<Reunion> filterReunion(String filterPattern);
-
-    List<Reunion> getFilteredList();
 }

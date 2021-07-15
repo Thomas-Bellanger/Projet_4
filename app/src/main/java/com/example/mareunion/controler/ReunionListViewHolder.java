@@ -5,12 +5,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mareunion.R;
-import com.example.mareunion.controler.RemoveReunionEvent;
 import com.example.mareunion.model.Reunion;
 
 import org.greenrobot.eventbus.EventBus;
@@ -23,8 +23,7 @@ public class ReunionListViewHolder extends RecyclerView.ViewHolder {
     public final TextView salle;
     public final TextView organisateur;
     public final ImageButton delette;
-    int color;
-    int indiceColor;
+    public int color;
 
 
     public ReunionListViewHolder(View itemView) {
@@ -35,50 +34,52 @@ public class ReunionListViewHolder extends RecyclerView.ViewHolder {
         salle = itemView.findViewById(R.id.salleText);
         organisateur = itemView.findViewById(R.id.Organisateur);
         delette = itemView.findViewById(R.id.delette);
+
+        if (salle.equals("Peach")) {
+            color = R.color.pink;
+
+        } else if ("Mario".equals(salle)) {
+            color = R.color.red;
+
+        } else if ("Luigi".equals(salle)) {
+            color = R.color.green;
+
+        } else if ("Yoshi".equals(salle)) {
+            color = R.color.caraibe;
+
+        } else if ("Warrio".equals(salle)) {
+            color = R.color.yellow;
+
+        } else if ("Waluigi".equals(salle)) {
+            color = R.color.purple;
+
+        } else if ("Toad".equals(salle)) {
+            color = R.color.grey;
+
+        } else if ("Bowser".equals(salle)) {
+            color = R.color.orange;
+
+        } else if ("Étoile".equals(salle)) {
+            color = R.color.blue;
+
+        } else if ("Cupa".equals(salle)) {
+            color = R.color.marron;
+        }
     }
 
     public void bind(Reunion reunion) {
-        getTint();
         this.organisateur.setText(reunion.getOrganisateur());
         this.reunionNumber.setText(reunion.getReunionNumber());
         this.heure.setText(reunion.getHeure());
         this.salle.setText(reunion.getSalle());
         Glide.with(image.getContext())
-                .load(R.drawable.baseline_info_black_24)
+                .load(R.drawable.baseline_info_white_24)
                 .apply(RequestOptions.circleCropTransform())
                 .into(image);
-        image.setColorFilter(color);
 
+        image.setColorFilter(ContextCompat.getColor(this.salle.getContext(), reunion.setColor()));
     }
-
-    public void deletteReunion(Reunion reunion) {
-        EventBus.getDefault().post(new RemoveReunionEvent(reunion));
-    }
-
-    void getTint(){
-        if (indiceColor==0){
-            color = R.color.pink;
-            indiceColor=1;
+        public void deletteReunion (Reunion reunion){
+            EventBus.getDefault().post(new RemoveReunionEvent(reunion));
         }
-        if (indiceColor==1){
-            color = (R.color.red);
-            indiceColor=2;
-        }
-        if (indiceColor==2){
-            color = (R.color.green);
-            indiceColor=3;
-        }
-        if (indiceColor==3){
-            color = (R.color.yellow);
-            indiceColor=4;
-        }
-        if (indiceColor==4){
-            color = (R.color.orange);
-            indiceColor=5;
-        }
-        if (indiceColor==5){
-            color = (R.color.purple);
-            indiceColor=0;
-        }
-    }
 }

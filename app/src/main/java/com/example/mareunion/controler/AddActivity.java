@@ -53,7 +53,6 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         salles = findViewById(R.id.choix_salle);
         mImageView = findViewById(R.id.imageView);
         mApiService=DI.getApiService();
-        image=android.R.drawable.ic_dialog_info;
 
         ArrayAdapter<CharSequence> adapterSalles = ArrayAdapter.createFromResource(this, R.array.salles, android.R.layout.simple_spinner_item);
         adapterSalles.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -86,8 +85,8 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
                         editOrganisateur.getText().toString() + mApiService.getParticipants());
                 mApiService.addReunion(mReunion);
                 finish();
-            }
-        });
+                }
+            });
     }
 
     private void configureToolBar() {
