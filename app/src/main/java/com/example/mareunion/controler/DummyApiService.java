@@ -54,6 +54,10 @@ public class DummyApiService implements ApiService {
                     filteredList.add(reunion);
                     Log.e("ajout_salle", "ajout par salle");
                 }
+                else if (reunion.getReunionNumber().toLowerCase().contains(filterLowerCase)) {
+                    filteredList.add(reunion);
+                    Log.e("ajout_reunion", "ajout par numéro");
+                }
             }
             Log.e("list", filteredList.toString());
             return filteredList;
