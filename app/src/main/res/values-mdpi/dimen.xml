@@ -40,10 +40,12 @@
     <dimen name="list_organisateur_margin">10dp</dimen>
     <dimen name="list_imageButton_padding">10dp</dimen>
     <dimen name="list_imageButton_margin">10dp</dimen>
+    <dimen name="list_participant_ems">240dp</dimen>
     <!---land-->
     <dimen name="land_recyclerView_height">280dp</dimen>
     <dimen name="land_participant_recyclerView_height">175dp</dimen>
     <dimen name="salle_margin_top">60dp</dimen>
     <dimen name="land_margin_top_addActivity">0dp</dimen>
     <drawable name="land_add_Reunion_drawable">@drawable/baseline_add_circle_white_24</drawable>
+    <dimen name="list_participant_ems_land">250dp</dimen>
 </resources>

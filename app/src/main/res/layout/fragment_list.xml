@@ -49,9 +49,9 @@
 
     <TextView
         android:id="@+id/Organisateur"
-        android:layout_width="wrap_content"
-        android:ems="16"
+        android:layout_width="@dimen/list_participant_ems"
         android:lines="1"
+        android:textSize="@dimen/list_heure_textSize"
         android:layout_height="@dimen/list_organisateur_height"
         android:layout_marginLeft="@dimen/list_organisateur_margin"
         android:text="Organisateur"
