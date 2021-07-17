@@ -10,19 +10,19 @@
         android:id="@+id/include2"
         layout="@layout/toolbar" />
 
-    <ImageButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addReunion"
-        android:layout_width="@dimen/land_imageButton_size"
-        android:layout_height="@dimen/land_imageButton_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/imageButton_margin"
         android:layout_marginRight="@dimen/imageButton_margin"
         android:layout_marginBottom="@dimen/imageButton_margin"
-        android:background="@drawable/baseline_remove_circle_white_18"
+        app:backgroundTint="@color/red"
         android:elevation="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/land_add_Reunion_drawable"
-        app:tint="#C10101" />
+        app:srcCompat="@drawable/baseline_add_white_24"
+        app:tint="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/View"

@@ -68,7 +68,7 @@ public class ReunionListViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(Reunion reunion) {
-        this.organisateur.setText(reunion.getOrganisateur());
+        this.organisateur.setText(reunion.getOrganisateur().replace("[","").replace("]",""));
         this.reunionNumber.setText(reunion.getReunionNumber());
         this.heure.setText(reunion.getHeure());
         this.salle.setText(reunion.getSalle());

@@ -56,18 +56,18 @@ public class DummyApiService implements ApiService {
         } else {
             String filterLowerCase = filterPattern.toLowerCase();
             for (Reunion reunion : reunions) {
-                if (reunion.getHeure().toLowerCase().contains(filterLowerCase)) {
+                if (reunion.getDate().toLowerCase().contains(filterLowerCase)) {
                     filteredList.add(reunion);
-                    Log.e("ajout_heure", "ajout par heure");
+                    //Log.e("ajout_heure", "ajout par heure");
                 } else if (reunion.getSalle().toLowerCase().contains(filterLowerCase)) {
                     filteredList.add(reunion);
-                    Log.e("ajout_salle", "ajout par salle");
+                    //Log.e("ajout_salle", "ajout par salle");
                 } else if (reunion.getReunionNumber().toLowerCase().contains(filterLowerCase)) {
                     filteredList.add(reunion);
-                    Log.e("ajout_reunion", "ajout par numéro");
+                    //Log.e("ajout_reunion", "ajout par numéro");
                 }
             }
-            Log.e("list", filteredList.toString());
+            //Log.e("list", filteredList.toString());
             return filteredList;
         }
     }

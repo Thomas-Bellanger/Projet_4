@@ -50,11 +50,15 @@
     <TextView
         android:id="@+id/Organisateur"
         android:layout_width="wrap_content"
+        android:ems="16"
+        android:lines="1"
         android:layout_height="@dimen/list_organisateur_height"
         android:layout_marginLeft="@dimen/list_organisateur_margin"
         android:text="Organisateur"
+        android:ellipsize="end"
         app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/reunionText" />
+        app:layout_constraintTop_toBottomOf="@+id/reunionText"
+        android:layout_marginRight="25dp" />
 
     <ImageButton
         android:id="@+id/delette"

@@ -24,7 +24,7 @@ public class ListTest {
 
     @Test
     public void addReunionWithSuccess() {
-        Reunion reunionToAdd = new Reunion("reunionNumber", "heure", "salle", "organisateur");
+        Reunion reunionToAdd = new Reunion("reunionNumber", "01/01/21","heure", "salle", "organisateur");
         mApiService.addReunion(reunionToAdd);
         assertTrue(mReunions.contains(reunionToAdd));
 
@@ -32,7 +32,7 @@ public class ListTest {
 
     @Test
     public void deletteReunionWithSuccess() {
-        Reunion reunionToDelette = new Reunion("reunionNumber", "heure", "salle", "organisateur");
+        Reunion reunionToDelette = new Reunion("reunionNumber", "01/01/21", "heure", "salle", "organisateur");
         mApiService.addReunion(reunionToDelette);
         assertTrue(mReunions.contains(reunionToDelette));
         mApiService.deletteReunion(reunionToDelette);
@@ -58,12 +58,12 @@ public class ListTest {
 
     @Test
     public void filtreList() {
-        Reunion reunionToFiltre = new Reunion("reunionNumber 0", "11:00", "salle", "organisateur");
+        Reunion reunionToFiltre = new Reunion("reunionNumber 0", "01/01/21","11:00", "salle", "organisateur");
         mApiService.addReunion(reunionToFiltre);
         assertTrue(mReunions.contains(reunionToFiltre));
-        Reunion reunionToIgnore = new Reunion("reunionNumber 1", "heure", "salle", "organisateur");
+        Reunion reunionToIgnore = new Reunion("reunionNumber 1","01/01/21", "heure", "salle", "organisateur");
         mApiService.addReunion(reunionToIgnore);
         assertTrue(mReunions.contains(reunionToIgnore));
-        assertTrue(mApiService.filterReunion("11:00").contains(reunionToFiltre));
+        assertTrue(mApiService.filterReunion("0").contains(reunionToFiltre));
     }
 }

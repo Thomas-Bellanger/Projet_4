@@ -18,9 +18,9 @@
     <dimen name="plus_margin">4dp</dimen>
     <dimen name="planifier_textSize">15dp</dimen>
     <dimen name="editText_organisateur">15dp</dimen>
-    <dimen name="editText_organisateur_margin">70dp</dimen>
+    <dimen name="editText_organisateur_margin">50dp</dimen>
     <dimen name="participant_recyclerView_width">212dp</dimen>
-    <dimen name="participant_recyclerView_height">150dp</dimen>
+    <dimen name="participant_recyclerView_height">130dp</dimen>
     <!---participants_fragment-->
     <dimen name="participant_textView_width">170dp</dimen>
     <dimen name="participant_imageButton_width">39dp</dimen>

@@ -21,11 +21,13 @@ public class Reunion implements Parcelable {
     private String reunionNumber;
     private String heure;
     private String salle;
+    private String date;
     private int color;
 
-    public Reunion(String reunionNumber, String heure, String salle, String organisateur) {
+    public Reunion(String reunionNumber, String date, String heure, String salle, String organisateur) {
 
         this.reunionNumber = reunionNumber;
+        this.date=date;
         this.heure = heure;
         this.salle = salle;
         this.organisateur = organisateur;
@@ -35,6 +37,7 @@ public class Reunion implements Parcelable {
     protected Reunion(Parcel in) {
         organisateur = in.readString();
         reunionNumber = in.readString();
+        date = in.readString();
         salle = in.readString();
         heure = in.readString();
         color = in.readInt();
@@ -44,9 +47,13 @@ public class Reunion implements Parcelable {
         return organisateur;
     }
 
+    public String getDate(){return date;}
+
     public void setOrganisateur(String organisateur) {
         this.organisateur = organisateur;
     }
+
+    public void setDate(String date){this.date = date;}
 
     public String getReunionNumber() {
         return reunionNumber;
@@ -118,6 +125,7 @@ public class Reunion implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(organisateur);
+        dest.writeString(date);
         dest.writeString(reunionNumber);
         dest.writeString(heure);
         dest.writeString(salle);
