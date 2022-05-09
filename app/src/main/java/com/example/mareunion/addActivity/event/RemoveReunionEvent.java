@@ -1,4 +1,4 @@
-package com.example.mareunion.controler;
+package com.example.mareunion.addActivity.event;
 
 import com.example.mareunion.model.Reunion;
 

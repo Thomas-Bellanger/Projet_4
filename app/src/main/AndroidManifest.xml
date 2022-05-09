@@ -11,10 +11,10 @@
         android:theme="@style/Theme.MaReunion">
 
         <activity
-            android:name=".controler.AddActivity"
+            android:name=".addActivity.AddActivity"
             android:label="Planifier une réunion"
-            android:parentActivityName=".controler.MainActivity" />
-        <activity android:name=".controler.MainActivity">
+            android:parentActivityName=".mainActivity.MainActivity" />
+        <activity android:name=".mainActivity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

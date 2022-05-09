@@ -1,4 +1,4 @@
-package com.example.mareunion.controler;
+package com.example.mareunion.mainActivity.adapter;
 
 import android.view.View;
 import android.widget.ImageButton;
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.mareunion.R;
+import com.example.mareunion.addActivity.event.RemoveReunionEvent;
 import com.example.mareunion.model.Reunion;
 
 import org.greenrobot.eventbus.EventBus;
@@ -68,7 +69,7 @@ public class ReunionListViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bind(Reunion reunion) {
-        this.organisateur.setText(reunion.getOrganisateur().replace("[","").replace("]",""));
+        this.organisateur.setText(reunion.getOrganisateur().replace("[", "").replace("]", ""));
         this.reunionNumber.setText(reunion.getReunionNumber());
         this.heure.setText(reunion.getHeure());
         this.salle.setText(reunion.getSalle());

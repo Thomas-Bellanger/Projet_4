@@ -7,7 +7,7 @@ import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
 
-import com.example.mareunion.controler.MainActivity;
+import com.example.mareunion.mainActivity.MainActivity;
 
 import org.junit.Before;
 import org.junit.Rule;

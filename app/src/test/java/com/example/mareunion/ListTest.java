@@ -1,7 +1,7 @@
 package com.example.mareunion;
 
-import com.example.mareunion.controler.DI;
-import com.example.mareunion.controler.DummyApiService;
+import com.example.mareunion.apiService.DI;
+import com.example.mareunion.apiService.DummyApiService;
 import com.example.mareunion.model.Participants;
 import com.example.mareunion.model.Reunion;
 

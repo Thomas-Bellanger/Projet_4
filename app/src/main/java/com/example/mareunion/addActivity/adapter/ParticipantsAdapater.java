@@ -1,4 +1,4 @@
-package com.example.mareunion.controler;
+package com.example.mareunion.addActivity.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

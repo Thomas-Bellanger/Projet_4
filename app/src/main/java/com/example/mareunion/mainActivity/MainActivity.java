@@ -1,4 +1,4 @@
-package com.example.mareunion.controler;
+package com.example.mareunion.mainActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +18,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mareunion.R;
+import com.example.mareunion.addActivity.AddActivity;
+import com.example.mareunion.addActivity.event.RemoveReunionEvent;
+import com.example.mareunion.apiService.ApiService;
+import com.example.mareunion.apiService.DI;
+import com.example.mareunion.mainActivity.adapter.ReunionListViewAdapter;
 import com.example.mareunion.model.Reunion;
 
 import org.greenrobot.eventbus.EventBus;

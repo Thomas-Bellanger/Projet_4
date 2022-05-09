@@ -1,4 +1,4 @@
-package com.example.mareunion.controler;
+package com.example.mareunion.apiService;
 
 import com.example.mareunion.model.Participants;
 import com.example.mareunion.model.Reunion;

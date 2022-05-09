@@ -27,7 +27,7 @@ public class Reunion implements Parcelable {
     public Reunion(String reunionNumber, String date, String heure, String salle, String organisateur) {
 
         this.reunionNumber = reunionNumber;
-        this.date=date;
+        this.date = date;
         this.heure = heure;
         this.salle = salle;
         this.organisateur = organisateur;
@@ -47,13 +47,17 @@ public class Reunion implements Parcelable {
         return organisateur;
     }
 
-    public String getDate(){return date;}
-
     public void setOrganisateur(String organisateur) {
         this.organisateur = organisateur;
     }
 
-    public void setDate(String date){this.date = date;}
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public String getReunionNumber() {
         return reunionNumber;

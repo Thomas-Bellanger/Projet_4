@@ -1,4 +1,4 @@
-package com.example.mareunion.controler;
+package com.example.mareunion.addActivity.adapter;
 
 import android.view.View;
 import android.widget.ImageButton;
@@ -7,6 +7,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mareunion.R;
+import com.example.mareunion.addActivity.event.RetirerParticipantEvent;
 import com.example.mareunion.model.Participants;
 
 import org.greenrobot.eventbus.EventBus;

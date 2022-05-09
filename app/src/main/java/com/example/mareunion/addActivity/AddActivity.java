@@ -1,9 +1,8 @@
-package com.example.mareunion.controler;
+package com.example.mareunion.addActivity;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,8 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
-
-import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -25,6 +22,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mareunion.R;
+import com.example.mareunion.addActivity.adapter.ParticipantsAdapater;
+import com.example.mareunion.addActivity.event.RetirerParticipantEvent;
+import com.example.mareunion.apiService.DI;
+import com.example.mareunion.apiService.DummyApiService;
 import com.example.mareunion.model.Participants;
 import com.example.mareunion.model.Reunion;
 
@@ -65,7 +66,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         create = findViewById(R.id.button_planifier);
         salles = findViewById(R.id.choix_salle);
         mImageView = findViewById(R.id.imageView);
-        date= findViewById(R.id.editTextDate);
+        date = findViewById(R.id.editTextDate);
         mApiService = DI.getApiService();
         mApiService.participants.clear();
 
@@ -73,22 +74,19 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         adapterSalles.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         salles.setAdapter(adapterSalles);
         salles.setOnItemSelectedListener(this);
-        
+
 
         this.configureToolBar();
 
         configureRecyclerView();
 
-        plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String list="";
-                participantMail = editTextMail.getText().toString();
-                participant = new Participants(participantMail);
-                mApiService.addParticipant(participant);
-                editTextMail.getText().clear();
-                                initList();
-            }
+        plus.setOnClickListener(v -> {
+            String list = "";
+            participantMail = editTextMail.getText().toString();
+            participant = new Participants(participantMail);
+            mApiService.addParticipant(participant);
+            editTextMail.getText().clear();
+            initList();
         });
         hours.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +97,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
                 picker = new TimePickerDialog(AddActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                        hours.setText(hour+":"+minute);
+                        hours.setText(hour + ":" + minute);
                     }
                 }, hour, minute, true);
                 picker.show();
@@ -116,7 +114,7 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
                 datePickerDialog = new DatePickerDialog(AddActivity.this, new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        date.setText(dayOfMonth+ "/"+(month+"/")+(year));
+                        date.setText(dayOfMonth + "/" + (month + "/") + (year));
                     }
                 }, year, month, day);
                 datePickerDialog.show();
@@ -125,15 +123,15 @@ public class AddActivity extends AppCompatActivity implements AdapterView.OnItem
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String list="";
-                for (int i=0; i<mApiService.participants.size(); i++){
-                list+=mApiService.participants.get(i).getMail()+"-";
-            }
+                String list = "";
+                for (int i = 0; i < mApiService.participants.size(); i++) {
+                    list += mApiService.participants.get(i).getMail() + "-";
+                }
                 mReunion = new Reunion(
                         "reunion " + mApiService.getReunions().size() + "   -",
-                        date.getText().toString(),hours.getText().toString() + "    -",
+                        date.getText().toString(), hours.getText().toString() + "    -",
                         salles.getSelectedItem().toString(),
-                        editOrganisateur.getText().toString()+"-" +list);
+                        editOrganisateur.getText().toString() + "-" + list);
                 mApiService.addReunion(mReunion);
                 finish();
             }

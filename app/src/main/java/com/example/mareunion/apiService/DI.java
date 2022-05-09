@@ -1,4 +1,4 @@
-package com.example.mareunion.controler;
+package com.example.mareunion.apiService;
 
 public class DI {
     private static final DummyApiService service = new DummyApiService() {
