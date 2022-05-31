@@ -1,5 +1,8 @@
 package com.example.mareunion;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
 import com.example.mareunion.apiService.DI;
 import com.example.mareunion.apiService.DummyApiService;
 import com.example.mareunion.model.Participants;
@@ -8,9 +11,6 @@ import com.example.mareunion.model.Reunion;
 import org.junit.Test;
 
 import java.util.List;
-
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -24,7 +24,7 @@ public class ListTest {
 
     @Test
     public void addReunionWithSuccess() {
-        Reunion reunionToAdd = new Reunion("reunionNumber", "01/01/21","heure", "salle", "organisateur");
+        Reunion reunionToAdd = new Reunion("reunionNumber", "01/01/21", "heure", "salle", "organisateur");
         mApiService.addReunion(reunionToAdd);
         assertTrue(mReunions.contains(reunionToAdd));
 
@@ -58,10 +58,10 @@ public class ListTest {
 
     @Test
     public void filtreList() {
-        Reunion reunionToFiltre = new Reunion("reunionNumber 0", "01/01/21","11:00", "salle", "organisateur");
+        Reunion reunionToFiltre = new Reunion("reunionNumber 0", "01/01/21", "11:00", "salle", "organisateur");
         mApiService.addReunion(reunionToFiltre);
         assertTrue(mReunions.contains(reunionToFiltre));
-        Reunion reunionToIgnore = new Reunion("reunionNumber 1","01/01/21", "heure", "salle", "organisateur");
+        Reunion reunionToIgnore = new Reunion("reunionNumber 1", "01/01/21", "heure", "salle", "organisateur");
         mApiService.addReunion(reunionToIgnore);
         assertTrue(mReunions.contains(reunionToIgnore));
         assertTrue(mApiService.filterReunion("0").contains(reunionToFiltre));

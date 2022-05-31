@@ -62,13 +62,9 @@ public class MainActivity extends AppCompatActivity implements Filterable {
         mApiService = DI.getApiService();
         configureRecyclerView();
 
-        addButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent addReunion = new Intent(MainActivity.this, AddActivity.class);
-                startActivity(addReunion);
-            }
+        addButton.setOnClickListener(v -> {
+            Intent addReunion = new Intent(MainActivity.this, AddActivity.class);
+            startActivity(addReunion);
         });
     }
 
